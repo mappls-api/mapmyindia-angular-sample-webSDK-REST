@@ -61,7 +61,7 @@ Example:
 
 ### 5. Create service page and put the given code:-
     
-```json
+```js
     import { Injectable } from "@angular/core";
     import { HttpClient } from '@angular/common/http';
     import { Observable } from "rxjs";
