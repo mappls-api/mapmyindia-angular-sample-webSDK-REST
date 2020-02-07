@@ -204,6 +204,16 @@ Example:
                 console.log(data);
             });
         }
+        geocode(){
+            this.demoService.geocode(this.token).then((data) => {
+              console.log(data);
+            });
+        }
+        textsearch(){
+            this.demoService.textsearch(this.token).then((data) => {
+              console.log(data);
+            });
+        }
     }
 ```
 ### 7. For showing response using button, write given code in *`app.component.html`*.
