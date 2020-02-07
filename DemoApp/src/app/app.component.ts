@@ -40,7 +40,19 @@ export class AppComponent implements OnInit {
     });
   }
 
-  distenceMatrix() {
+  geocode(){
+    this.demoService.geocode(this.token).then((data) => {
+      console.log(data);
+    });
+  }
+
+  textsearch(){
+    this.demoService.textsearch(this.token).then((data) => {
+      console.log(data);
+    });
+  }
+
+  distanceMatrix() {
     // tslint:disable-next-line: max-line-length
     this.demoService.jsonp('https://apis.mapmyindia.com/advancedmaps/v1/<Rest_Key>/distance_matrix/driving/77.983936,28.255904;77.05993,28.487555;77.15993,28.587555;77.264997,28.554534?sources=0;1&destinations=2;3').then(function(data) {
         console.log(data);
@@ -54,5 +66,18 @@ export class AppComponent implements OnInit {
     });
   }
 
-}
+  route_adv() {
+      // tslint:disable-next-line: max-line-length
+    this.demoService.jsonp('https://apis.mapmyindia.com/advancedmaps/v1/<Rest_Key>/route_adv/driving/77.227434,28.610981;77.212021,28.616679?alternatives=true&&geometries=polyline&overview=full&exclude=&steps=true&region=ind').then(function(data) {
+        console.log(data);
+    });
+  }
 
+  route_eta() {
+      // tslint:disable-next-line: max-line-length
+    this.demoService.jsonp('https://apis.mapmyindia.com/advancedmaps/v1/<Rest_Key>/route_eta/driving/77.227434,28.610981;77.212021,28.616679?alternatives=true&&geometries=polyline&overview=full&exclude=&steps=true&region=ind').then(function(data) {
+        console.log(data);
+    });
+  }
+
+}
