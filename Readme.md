@@ -121,7 +121,6 @@ Example:
                 .toPromise()
                 .then(
                     res => { // Success
-                        //console.log(res); 
                         resolve(res);
                         }
                     );
@@ -129,7 +128,44 @@ Example:
             return promise;
         }
 ```
-### 6. Call OAuth API (AutoSuggest, Nearby), write given code in *`app.component.ts`* file.
+
+#### OAuth Geocode API using token
+
+```js
+        geocode(token: string) {
+            const _url = this.geocodeURL+"&access_token="+token;
+            const promise = new Promise((resolve, reject) => {
+            this.httpClient.get(_url)
+                .toPromise()
+                .then(
+                    res => { // Success
+                        resolve(res);
+                        }
+                    );
+                });
+            return promise;
+        }
+```
+
+#### OAuth TextSearch API using token
+
+```js
+        textsearch(token: string) {
+            const _url = this.textsearchURL+"&access_token="+token;
+            const promise = new Promise((resolve, reject) => {
+              this.httpClient.get(_url)
+                .toPromise()
+                .then(
+                    res => { // Success
+                        resolve(res);
+                    }
+                );
+            });
+            return promise;
+        }
+```
+
+### 6. Call OAuth API (AutoSuggest, Nearby, Geocode, TextSearch), write given code in *`app.component.ts`* file.
 ```js
     import { Component, OnInit } from '@angular/core';
     import { DemoService } from './app.service';
@@ -182,8 +218,10 @@ Example:
         <div id="map"></div><br> //div for map
         <hr/>
         <h4>REST API</h4>
-        <button (click)="nearby()">Nearby</button>
-        <button (click)="auto()">Auto</button>
+        <button (click)="nearby()">Atl_Nearby</button>
+        <button (click)="auto()">Atl_Auto</button>
+        <button (click)="geocode()">Atl_Geocode</button>
+        <button (click)="textsearch()">Atl_Textsearch</button>
     </div>
 ```
 ### 8. Giving height & width to the Map
